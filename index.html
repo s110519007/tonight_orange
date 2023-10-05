@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- ============== 輪播css ============== -->
+    <link rel="stylesheet" href="https://media.etmall.com.tw/sp/12500/swiper.min.css">
+  <!-- ============== 共用css ============== -->
+    <link rel="stylesheet" href="https://media.etmall.com.tw/sp/12500/animate.min.css">
+    <link rel="stylesheet" href="https://media.etmall.com.tw/sp/12500/generate_v1.4.1.css">
+  
+    <!-- [電梯步驟1] 電梯CSS 不用就關掉 -->
+    <!-- 商品左電梯CSS，要使用還要在步驟2開啟左電梯data資料 -->
+    <!-- <link id="localElevatorLeft" rel="stylesheet" href="sp-elevator-left.css"> -->
+  
+    <!-- 商品右電梯CSS，步驟2有測試div可以測試 -->
+    <link id="localElevatorRight" rel="stylesheet" href="sp-elevator-right.css">
+    <!-- [電梯步驟1] 電梯CSS END -->
+
+
+    <style>
+
+      body {
+        position: relative;
+      /* 背景顏色 */
+        background-color: #000;
+      }
+  
+      body:before {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url(bg-m.jpg) center 0 no-repeat;
+        background-size: 100%;
+      }
+  
+      @media screen and (min-width:960px) {
+        body:before {
+          background: url(bg.jpg) center 0 no-repeat;
+          background-size: auto;
+        }
+      }
+  
+      body.bg-fixed:before {
+        position: fixed;
+        height: 100vh;
+      }
+  
+      /* 調整logo位置大小 */
+      /* .logo {
+        top: 1%;
+        left: 1%;
+        width: 30%;
+        max-width: 220px;
+      } */
+  
+        /* 連結測試 */
+        /* .sp__visual a{
+          filter: brightness(500%);
+        } */
+  
+        /* 切片測試 */
+        /* .visual__fragment::before {
+          content: '';
+          position: absolute;
+          z-index: 1;
+          width: 100%;
+          height: 100%;
+          border: 1px solid #00f;
+          pointer-events: none;
+        } */
+  
+      /* --- 動畫小物件 --- */
+      .animate__wrap {
+        position: relative;
+        z-index: 1;
+        transform: translateZ(0);
+      }
+
+
+    </style>
+
+  </head>
+  <!-- 是否要固定背景，不要就拿掉class -->
+  <body>
+
+  <div class="navRightBar" id="navRightBar"></div>
+  <div class="elevatorHome js--main--dialog" id="elevatorHome"></div>
+  <div id="barHome"></div>
+  <div class="home--icon layout--main" id="iconHome"></div>
+
+  
+  <div class="sp__wallper" id="spWrap">
+
+
+      <main class="sp__main">
+
+        <div class="layout--main home--logo">
+          <a href="https://www.u-mall.com.tw/"><img class="logo" src="umall-logo.png" alt="森森購物"></a>
+        </div>
+
+
+        <section class="sp__visual">
+          <div class="layout--main">
+            <ul class="visual--auto clearfix">
+              <li class="visual__fragment width--auto"><img src="index_01.gif" alt="今晚有橘嗎"></li>
+              <li class="visual__fragment width--auto"><a href="https://www.u-mall.com.tw/i/4023351"><img src="index_02.jpg" alt="美麗蓓菲"></a></li>
+              <li class="visual__fragment width--auto"><a href="https://www.u-mall.com.tw/i/2940446"><img src="index_03.jpg" alt="韓國cocodor"></a></li>
+              <li class="visual__fragment width--auto"><a href="https://www.u-mall.com.tw/i/3493535"><img src="index_04.jpg" alt="百齡"></a></li>
+              <li class="visual__fragment width--auto"><a href="https://www.u-mall.com.tw/i/2702731"><img src="index_05.jpg" alt="AL老工匠"></a></li>
+              <li class="visual__fragment width--auto"><a href="https://www.u-mall.com.tw/i/2762679"><img src="index_06.jpg" alt="Le Creuset"></a></li>
+            </ul>
+
+            </div>
+          </div>
+        </section>
+      </main>
+      
+
+    
+      <!-- ============== 共用JS ============== -->
+  <script src="https://media.etmall.com.tw/sp/12500/jquery-3.6.0.min.js"></script>
+  <script id="generateScript" src="https://media.etmall.com.tw/sp/12500/generate_v1.4.1.js"></script>
+
+  <!--[電梯步驟2] 電梯 JS -->
+  <!-- 商品左電梯單機版資料，不用就關掉，要使用還要上方步驟1開啟商品左電梯CSS -->
+  <!-- <script id="dataElevatorLeft" src="data-elevator.js"></script> -->
+
+  <!-- 線上自動切換電梯，無論如何都要有 -->
+  <script id="checkElevator" src="https://media.etmall.com.tw/sp/11911/check-elevator.js"></script>
+  <!-- [電梯步驟2] 電梯 JS END -->
+
+  <!-- [測試區] -->
+  <!-- 測試商品右電梯用，上線前必須關掉-->
+  <!-- <div data-title="ccc"></div> -->
+  <!-- 測試霸道電梯用，開啟時上方自動切換電梯要關閉，這支正式上線時需關閉、上方的要開啟回來 -->
+  <!-- <script id="checkElevator" src="https://media.etmall.com.tw/sp/14841/test-elevator.js?87"></script> -->
+
+
+  </body>
+</html>

@@ -1,0 +1,377 @@
+/* 校正iphone有瀏海的機型 */
+.safe-area-padding-bottom {
+    /* 在 iphone x + 中本句才會生效 */
+    padding-top: constant(safe-area-inset-top);
+    padding-top: env(safe-area-inset-top);
+    padding-right: constant(safe-area-inset-right);
+    padding-right: env(safe-area-inset-right);
+    padding-bottom: 85px; /* 兼容不支持 env( ) 的設備  */
+    padding-bottom: calc(constant(safe-area-inset-bottom) + 85px);
+    padding-bottom: calc(env(safe-area-inset-bottom) + 85px);
+    padding-left: constant(safe-area-inset-left);
+    padding-left: env(safe-area-inset-left);
+}
+
+@media screen and (min-width: 1213px) {
+    .safe-area-padding-bottom {
+        padding-top: constant(safe-area-inset-top);
+        padding-top: env(safe-area-inset-top);
+        padding-right: constant(safe-area-inset-right);
+        padding-right: env(safe-area-inset-right);
+        padding-bottom: constant(safe-area-inset-bottom);
+        padding-bottom: env(safe-area-inset-bottom);
+        padding-left: constant(safe-area-inset-left);
+        padding-left: env(safe-area-inset-left);
+    }
+}
+
+/* == nav style ==*/
+
+.sp-is--hide {
+    opacity: 0;
+    pointer-events: none;
+}
+/* ==  !* 看bar height *!  == */
+
+/* ==
+ ** [右側電梯]單頁錨點 code
+  == */
+
+.sp-right__nav * {
+    box-sizing: border-box;
+}
+
+/* == 側選單位置設定:right左右位置+寬度 == */
+
+.sp-right__nav {
+    position: relative;
+    z-index: 600;
+    top: 0;
+    right: 0;
+    left: 0;
+    overflow-x: auto;
+    width: 100%;
+    margin: auto;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    /* == -webkit-transition: all 0.5s ease; == */
+    /* == -moz-transition: all 0.5s ease; == */
+    /* == -o-transition: all 0.5s ease; == */
+    /* == transition: all 0.5s ease; == */
+}
+
+.sp-right__nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sp-right__nav ul:after {
+    content: '';
+    clear: both;
+    display: block;
+    zoom: 1;
+}
+
+/* == end of nav style == */
+
+/* ==  mobile  == */
+
+@media screen and (max-width: 1212px) {
+    /* ==
+     ** [右側電梯]單頁錨點 code
+      == */
+    .sp-nav-right_ul {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        width: 100vw;
+        justify-content: initial;
+        background-color: rgba(0, 5, 25, 0.72);
+        color: #fff;
+    }
+
+    /* == 側選單子選項設定:文字大小 == */
+    .sp-right__nav li {
+        display: inline-block;
+        text-align: center;
+        font-size: 15px;
+        min-width: 87px;
+        max-height: 39px;
+        overflow-y: hidden;
+    }
+
+    /* ==  mobile active text color  == */
+    .sp-right__nav li a.active {
+        /* ==  custom  == */
+        color: #efc200;
+    }
+
+    /* == 側選單子選項設定:底圖+底色+上下距 == */
+    .sp-right__nav a {
+        display: inline-block;
+        position: static;
+        z-index: 1;
+        overflow: hidden;
+        min-width: 87px;
+        height: 39px;
+        line-height: 39px;
+        padding: 1px 5px;
+        text-decoration: none;
+        /* ==  custom  == */
+        color: #fff;
+    }
+
+    /* ==  側選單表頭設定:底圖+高  == */
+    .sp-right__nav li.sp-bav_top_img {
+        min-width: 0;
+    }
+
+    .navRightBar {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        z-index: 102;
+    }
+
+    /* ==  修正滾軸 + 隱藏desktop按鈕  == */
+    .sp-nav-right_ul::-webkit-scrollbar, .sp-right__nav li.sp-nav-right__app, .sp-right__nav li.sp-nav-right__top, .sp-fixed__nav li.sp-nav__bottom {
+        display: none;
+    }
+
+    /* ==  app error  == */
+    .n-sp__box {
+        overflow: visible;
+    }
+}
+
+@media screen and (min-width: 1213px) {
+    /* ==  第二段 END  == */
+    .sp-right__nav {
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+        overflow-x: hidden;
+    }
+}
+
+@media screen and (min-width: 1213px) {
+    /* == 側選單位置設定:right左右位置+寬度 == */
+    .sp-right__nav {
+        position: fixed;
+        z-index: 600;
+        width: 130px;
+        right: 1%;
+        margin-right: 0;
+        top: 5%;
+        /* == -webkit-transition: all 0.5s ease; == */
+        /* == -moz-transition: all 0.5s ease; == */
+        /* == -o-transition: all 0.5s ease; == */
+        /* == transition: all 0.5s ease; == */
+    }
+    .sp-right__nav.fade {
+        transition: opacity 0.5s ease;
+        opacity: 0;
+    }
+    .sp-right__nav.left-in {
+        transform: translateX(112%);
+        transition: transform 0.5s ease;
+    }
+    .sp-right__nav.up-in {
+        transform: translateY(40px);
+        transition: all 0.5s ease;
+        opacity: 0;
+    }
+    .sp-right__nav.fade.active {
+        opacity: 1;
+    }
+    .sp-right__nav.left-in.active {
+        transform: translateX(0);
+    }
+    .sp-right__nav.up-in.active {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    .sp-right__nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* == 側選單子選項設定:文字大小 == */
+    .sp-right__nav li {
+        display: block;
+        text-align: center;
+        font-size: 16px;
+        position: relative;
+    }
+
+    .sp-right__nav li::before {
+        height: 1px;
+        background-color: #000;
+        bottom: 0;
+        content: '';
+        position: absolute;
+        z-index: 2;
+        display: block;
+        width: 70%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .sp-right__nav li:first-child:before, .sp-right__nav li:nth-last-child(2):before, .sp-right__nav li:nth-last-child(3):before {
+        height: 0px;
+    }
+
+    /* == 側選單子選項設定:底圖+底色+上下距 == */
+    .sp-right__nav a {
+        background: url(nav_bg_right.png?2342523) 0 0 repeat-y;
+        display: block;
+        padding-top: 7px;
+        padding-bottom: 7px;
+        position: relative;
+        z-index: 1;
+        text-decoration: none;
+        font-family: Microsoft JhengHei;
+        /* ==  custom  == */
+        color: #000;
+    }
+
+    /* ==  hover or active : text-color  == */
+    .sp-right__nav li a.active, .sp-right__nav a:hover {
+        /* ==  custom  == */
+        color: #ed1c24;
+    }
+
+    /* ==  側選單子選項設定:滑過去的底色  == */
+    .sp-right__nav li a.active:after, .sp-right__nav a:hover:after {
+        position: absolute;
+        z-index: -1;
+        content: "";
+        top: 0;
+        width: 11px;
+        height: 11px;
+        z-index: 2;
+        border-radius: 50%;
+        /* ==  custom  == */
+        border: 3px solid #6e423e;
+        top: 13px;
+        left: 18px;
+    }
+
+    /* ==  側選單表頭設定:底圖+高  == */
+    .sp-bav_top_img {
+        background: url(nav_home_right.png) 0 0 no-repeat;
+        height: 40px;
+    }
+
+    .sp-nav-right__top a:hover:after, .sp-nav-right__app a:hover:after {
+        background: none;
+        border: 0;
+    }
+
+    /* == 側選單表底設定:底圖+高 == */
+    .sp-nav-right__app a {
+        overflow: hidden;
+        background: url(nav_app_right.png) 0 0 no-repeat;
+        white-space: nowrap;
+        text-indent: 1000%;
+        /* ==  custom  == */
+        height: 121px;
+    }
+
+    .sp-nav-right__top a {
+        overflow: hidden;
+        background: url(nav_top_right.png) 0 0 no-repeat;
+        white-space: nowrap;
+        text-indent: 1000%;
+        /* ==  custom  == */
+        height: 57px;
+    }
+}
+
+/* ==  新電梯desktop 隱藏  == */
+
+.sp-right__nav li.sp-nav-right__mobile__click {
+    display: none;
+}
+
+@media screen and (max-width: 1213px) {
+    .sp-right__nav li.sp-nav-right__mobile__click {
+        display: block;
+        min-width: 40px;
+        height: 39px;
+        width: 39px;
+        background-color: #333;
+        position: absolute;
+        top: 0;
+        right: 0;
+        cursor: pointer;
+    }
+
+    /* == .sp-right__nav li.sp-nav-right__mobile__click.close { == */
+    /* == min-width: 25px; == */
+    /* == height: 25px; == */
+    /* == width: 25px; == */
+    /* == } == */
+    .sp-nav-right__mobile__click:before,
+    .sp-nav-right__mobile__click:after {
+        display: block;
+        content: '';
+        clear: both;
+        z-index: 100;
+        position: absolute;
+        top: 13px;
+        height: 12px;
+        width: 2px;
+        background-color: #fff;
+        transform-origin: center bottom;
+        cursor: pointer;
+        transition-duration: .5s;
+    }
+
+    .sp-nav-right__mobile__click:before {
+        transform: rotate(35deg);
+        right: 21px;
+    }
+
+    .sp-nav-right__mobile__click:after {
+        transform: rotate(-35deg);
+        right: 20px;
+    }
+
+    .sp-nav-right__mobile__click.btn--active:before {
+        transform: rotate(-135deg);
+        height: 16px;
+        top: -4px;
+        right: 12px;
+    }
+
+    .sp-nav-right__mobile__click.btn--active:after {
+        transform: rotate(135deg);
+        height: 16px;
+        top: -4px;
+        right: 23px;
+    }
+
+    .click--active {
+        flex-wrap: wrap;
+        opacity: 0;
+        padding-right: 20px !important;
+        /* == transition-duration: .5s; == */
+        animation: opacity .3s ease-in both;
+    }
+
+    .add--fixed {
+        position: fixed;
+    }
+
+    @keyframes opacity {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+}
